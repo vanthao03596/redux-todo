@@ -1,25 +1,33 @@
-import React, { Component } from 'react'
+import React from 'react';
 
-class Footer extends Component {
-    render() {
-        return (
-            <footer className="footer">
-            <span className="todo-count"><strong>0</strong> item left</span>
-            <ul className="filters">
-              <li>
-                <a className="selected" href="#/">All</a>
-              </li>
-              <li>
-                <a href="#/active">Active</a>
-              </li>
-              <li>
-                <a href="#/completed">Completed</a>
-              </li>
-            </ul>
-            <button className="clear-completed">Clear completed</button>
-          </footer>
-        )
-    }
-}
+import LinkFilter from '../containers/LinkFilter';
+import { SHOW_ACTIVE, SHOW_ALL, SHOW_COMPLETED } from '../constants/todoFilter';
+
+const FILTER_TITLES =
+  {
+    SHOW_ACTIVE: 'Active',
+    SHOW_ALL: 'All',
+    SHOW_COMPLETED: 'Completed'
+  }
+;
+
+const Footer = props => (
+  <footer className="footer">
+    <span className="todo-count">
+      <strong>0</strong> item left
+    </span>
+    <ul className="filters">
+      {Object.keys(FILTER_TITLES).map(filter => (
+        <li key={filter}>
+            <LinkFilter filter={filter} >
+                {FILTER_TITLES[filter]}
+            </LinkFilter>
+        </li>
+
+      ))}
+    </ul>
+    <button className="clear-completed">Clear completed</button>
+  </footer>
+);
 
 export default Footer;

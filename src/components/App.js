@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import Header from "./Header";
-import Main from "./Main";
-import Footer from "./Footer";
+import React, { Component } from 'react';
+
+import Header from '../containers/Header';
+import Main from '../containers/Main';
 
 class App extends Component {
   render() {
@@ -9,7 +9,6 @@ class App extends Component {
       <section className="todoapp">
         <Header />
         <Main />
-        <Footer />
       </section>
     );
   }
